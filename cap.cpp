@@ -37,17 +37,16 @@ bool is_capi(string capicua){
     return true;
 }
 
-int gen_capi(string cap){
-    int capicua = 1;
+float gen_capi(string cap){
+    float capicua = 1;
     string capr = cap;
     if (is_capi(cap)){
-        return stoi(cap);
+        return stof(cap);
     }
     reverse(capr.begin(), capr.end());
-    cout << "Numero suma " << to_string(stoi(cap) + stoi(capr)) << endl;
-    /*capicua = stoi(cap) + stoi(capr);
-    gen_capi(to_string(capicua));*/
-    return gen_capi(to_string(stoi(cap) + stoi(capr)));
+    string res = to_string(stof(cap) + stof(capr));
+    cout << "Numero suma " << res.substr(0, res.find(".")) << endl;
+    return gen_capi(res.substr(0, res.find(".")));
 }
 
 int main(){
@@ -55,7 +54,7 @@ int main(){
     string capicua;
     cout << "Ingresa el numero del cual quieras generar un capicua" << endl;
     cin >> capicua;
-    int resultado = gen_capi(capicua);
+    float resultado = gen_capi(capicua);
     cout << "El resultado es " << resultado << endl ;
     return 0;
 }
