@@ -37,14 +37,14 @@ bool is_capi(string capicua){
     return true;
 }
 
-float gen_capi(string cap){
+double gen_capi(string cap){
     float capicua = 1;
     string capr = cap;
     if (is_capi(cap)){
-        return stof(cap);
+        return stold(cap);
     }
     reverse(capr.begin(), capr.end());
-    string res = to_string(stof(cap) + stof(capr));
+    string res = to_string(stold(cap) + stold(capr));
     cout << "Numero suma " << res.substr(0, res.find(".")) << endl;
     return gen_capi(res.substr(0, res.find(".")));
 }
